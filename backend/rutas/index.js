@@ -9,6 +9,7 @@ const FavoritesController = require('../controllers/FavoritesController');
 routes.delete('/genres/:id',genreController.deleteGenre);
 routes.post('/genres',genreController.createGenre);
 routes.get('/genres',genreController.getGenre);
+routes.get('/genres/:id',genreController.getFilmsbyGenre)
 
 
 

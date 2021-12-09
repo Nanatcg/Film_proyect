@@ -33,7 +33,7 @@ function addFavorite(req, res){
 function deleteFavorite(req,res){
     if(connection){
         const favorite = req.params.id;
-        let sql = `DELETE FROM favorites WHERE id=${favorite}`
+        let sql = `DELETE FROM favorites WHERE idFild=${favorite}`
         connection.query(sql,(err)=>{
             if(err){
                 res.json(err)
