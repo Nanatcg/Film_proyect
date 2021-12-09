@@ -5,8 +5,8 @@ function getFilms(req, res) {
     if(connection){
         let sql = `select films.id,films.name,Director,type,year, gens.name as Genre, 
         CASE
-                WHEN favs.idFild IS NULL THEN false
-                ELSE true
+                WHEN favs.idFild IS NULL THEN 0
+                ELSE 1
                 END as favorite
     from Film films
     inner join Genre gens ON gens.id = films.idGenre
@@ -47,13 +47,13 @@ function getFilm(req,res) {
 function createFilm(req, res){
     if(connection){
         const Film = req.body;
-        if(!Film.Director || !Film.name || !Film.year){
-            return res.status(400).send({error: true, mensaje: "no deben estar vacios director name y year"})
+        if(!Film.director || !Film.name || !Film.year){
+            return res.status(400).send({error: true, mensaje: "El titulo y el autor y el año no deben estar vacios"})
         }
         if(Film.name.length >80) {
             return res.status(400).send({error: true, mensaje: "el nombre no debe exeder de 80 caracteres."})
         }
-        if(Film.Director.length > 60){
+        if(Film.director.length > 60){
             return res.status(400).send({error: true, mensaje: "el director no debe exeder de 60 caracteres."})
 
         }

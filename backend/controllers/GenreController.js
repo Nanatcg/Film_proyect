@@ -25,20 +25,6 @@ function createGenre(req,res) {
     }
 }
 
-function getFilmsbyGenre(req,res){
-    if(connection){
-        const id =req.params.id;
-        let sql = `select * from Film Where idGenre=${id}`;
-        connection.query(sql, (err, films) => {
-            if(err){
-                res.send(err)
-            } else {
-                res.json(films);
-            }
-        })
-    }
-}
-
 function deleteGenre(req,res){
     if(connection){
         const id = req.params.id;
@@ -72,6 +58,5 @@ function getGenre(req,res){
 module.exports = {
     getGenre,
     createGenre,
-    deleteGenre,
-    getFilmsbyGenre
+    deleteGenre
 }
